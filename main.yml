@@ -1,0 +1,27 @@
+---
+- hosts: localhost # ansible-playbook <this file> -K -vvv
+  gather_facts: no
+  vars:
+    pkgs: curl git keychain mlocate net-tools rsync software-properties-common telnet vim wget
+  tasks:
+  # - name: install via apt
+  #   apt: pkg={{ pkgs.split(' ') }} update_cache=yes
+  #   become: yes
+
+  # - name: git configs
+  #   git_config: "{{ item }}"
+  #   loop:
+  #   - { name: "color.ui", scope: global, value: true }
+  #   - { name: "user.name", scope: global, value: your_name }
+  #   - { name: "user.email", scope: global, value: placeholder@email.com }
+
+  # - name: keychain config in bashrc
+  #   lineinfile: path=.bashrc line='eval `keychain --eval --agents ssh id_rsa`'
+
+  # - git: repo=https://github.com/ralphie02/ws-setup.git dest=/tmp/ws-setup
+
+  # - import_tasks: /tmp/ws-setup/terminal.yml
+  # - import_tasks: /tmp/ws-setup/tmux.yml
+  # - import_tasks: /tmp/ws-setup/fzf.yml
+
+  # - raw: rm -r /tmp/ws-setup

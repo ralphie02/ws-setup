@@ -1,0 +1,57 @@
+---
+- set_fact:
+    ws_ps1: \[\e[96m\]\w\[\e[94m\]$(git_l_bracket)\[\e[91m\]$(parse_git_branch)\[\e[94m\]$(git_r_bracket)\[\e[93m\]$(git_changed) \[\e[00m\]
+- set_fact:
+    host_ps1: \[\e[96m\]\u\[\e[97m\]@\[\e[91m\]\H \[\e[92m\]\A\[\e[92m\]-\[\e[92m\]\d {{ ws_ps1 }}
+
+- name: terminal | bashrc histsize
+  lineinfile: "{{ item }}"
+  loop:
+  - { path: .bashrc, regexp: ^HISTSIZE=, line: HISTSIZE=200000 }
+  - { path: .bashrc, regexp: ^HISTFILESIZE=, line: HISTFILESIZE=300000 }
+
+- name: terminal | bashrc
+  blockinfile:
+    block: |
+      eval `keychain --eval --agents ssh id_rsa`
+
+      parse_git_branch() {
+        git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/'
+      }
+      git_l_bracket() { if [ "$(parse_git_branch)" != "" ]; then echo '('; fi }
+      git_r_bracket() { if [ "$(parse_git_branch)" != "" ]; then echo ')'; fi }
+      git_changed() {
+        IS_GIT_CLEAN='clean'
+        STATUS=`git status 2> /dev/null | grep "$IS_GIT_CLEAN"`
+        if [[ "$STATUS" != *"$IS_GIT_CLEAN"* ]] && [ -e ./.git ]; then echo ' ✗'; fi
+      }
+
+      PS1='{{ (inventory_hostname == "localhost") | ternary(ws_ps1, host_ps1) }}'
+
+      export EDITOR=vim
+      export DISPLAY=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2}'):0
+      export TERM=xterm-256color
+    dest: .bashrc
+    backup: yes
+
+- name: terminal | vimrc
+  copy:
+    dest: .vimrc
+    content: |
+      syntax on
+      set background=dark
+      set visualbell
+      set tabstop=2 softtabstop=0 expandtab shiftwidth=2 smarttab
+      :set mouse= "Enables Windows right-click pasting on VIM 8.0
+
+- name: terminal | inputrc
+  copy:
+    dest: .inputrc
+    content: |
+      set completion-ignore-case on
+      set bell-style none
+      "\e[1;5C": forward-word
+      "\e[1;5D": backward-word
+      "\e[A": history-search-backward
+      "\e[B": history-search-forward
+      set bell-style none

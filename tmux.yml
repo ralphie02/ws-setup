@@ -1,0 +1,25 @@
+---
+- name: tmux | pkgs
+  apt: pkg=tmux,xclip update_cache=yes
+  become: yes
+
+- git: repo=git@github.com:ralphie02/.tmux.git dest=.tmux
+
+- name: tmux | base config
+  file: src=.tmux/.tmux.conf dest=.tmux.conf state=link
+
+- name: tmux | conf diff
+  raw: diff .tmux/.tmux.conf.local .tmux.conf.local | awk -F'> ' 'NR>3 { print a }{ a=$2 }' |
+    cmp .tmux/my.tmux.edit
+  register: reg_conf_diff
+  failed_when: no
+
+# runs when .tmux.conf.local is missing || text in .tmux/my.tmux.edit is missing
+- name: tmux | conf copy
+  copy: src=.tmux/.tmux.conf.local dest=.tmux.conf.local backup=yes
+  when: reg_conf_diff.rc == 1
+
+- name: tmux | conf edit
+  blockinfile:
+    block: "{{ lookup('file', '.tmux/my.tmux.edit') }}"
+    dest: .tmux.conf.local
