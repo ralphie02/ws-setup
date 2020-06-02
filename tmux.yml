@@ -10,7 +10,7 @@
 
 - name: tmux | conf diff
   raw: diff .tmux/.tmux.conf.local .tmux.conf.local | awk -F'> ' 'NR>3 { print a }{ a=$2 }' |
-    cmp .tmux/my.tmux.edit
+    cmp .tmux/my.tmux
   register: reg_conf_diff
   failed_when: no
 
@@ -21,5 +21,5 @@
 
 - name: tmux | conf edit
   blockinfile:
-    block: "{{ lookup('file', '.tmux/my.tmux.edit') }}"
+    block: "{{ lookup('file', '.tmux/my.tmux') }}"
     dest: .tmux.conf.local
