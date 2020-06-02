@@ -7,8 +7,8 @@
 - name: terminal | bashrc histsize
   lineinfile: "{{ item }}"
   loop:
-  - { path: .bashrc, regexp: ^HISTSIZE=, line: HISTSIZE=200000 }
-  - { path: .bashrc, regexp: ^HISTFILESIZE=, line: HISTFILESIZE=300000 }
+  - { path: ~/.bashrc, regexp: ^HISTSIZE=, line: HISTSIZE=200000 }
+  - { path: ~/.bashrc, regexp: ^HISTFILESIZE=, line: HISTFILESIZE=300000 }
 
 - name: terminal | bashrc
   blockinfile:
@@ -32,12 +32,12 @@
       export LESS="$LESS -R -Q" # disable beep in LESS for Linux on Win10
       export DISPLAY=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2}'):0
       export TERM=xterm-256color
-    dest: .bashrc
+    dest: ~/.bashrc
     backup: yes
 
 - name: terminal | vimrc
   copy:
-    dest: .vimrc
+    dest: ~/.vimrc
     content: |
       syntax on
       set background=dark
@@ -48,7 +48,7 @@
 
 - name: terminal | inputrc
   copy:
-    dest: .inputrc
+    dest: ~/.inputrc
     content: |
       set completion-ignore-case on
       # disable beep for Linux on Win10
@@ -58,3 +58,20 @@
       "\e[A": history-search-backward
       "\e[B": history-search-forward
       set bell-style none
+
+- name: terminal | .ssh/config
+  copy:
+    dest: ~/.ssh/config
+    content: |
+      Host *
+        StrictHostKeyChecking no
+
+- name: terminal | /etc/wsl.conf
+  copy:
+    dest: /etc/wsl.conf
+    content: |
+      [automount]
+      options = "metadata,umask=22,fmask=11"
+
+      [network]
+      generateHosts = false
