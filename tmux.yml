@@ -23,4 +23,4 @@
 - name: tmux | conf edit
   blockinfile:
     block: "{{ lookup('file', '~/.tmux/my.tmux') }}"
-    dest: .tmux.conf.local
+    dest: ~/.tmux.conf.local
