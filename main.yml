@@ -15,13 +15,12 @@
   #   - { name: "user.name", scope: global, value: your_name }
   #   - { name: "user.email", scope: global, value: placeholder@email.com }
 
-  # - name: keychain config in bashrc
-  #   lineinfile: path=.bashrc line='eval `keychain --eval --agents ssh id_rsa`'
-
   # - git: repo=https://github.com/ralphie02/ws-setup.git dest=/tmp/ws-setup
+
+  # - name: ansible config
+  #   copy: src=/tmp/ws-setup/ansible.cfg dest=.ansible.cfg force=no
 
   # - import_tasks: /tmp/ws-setup/terminal.yml
   # - import_tasks: /tmp/ws-setup/tmux.yml
   # - import_tasks: /tmp/ws-setup/fzf.yml
-
   # - raw: rm -r /tmp/ws-setup

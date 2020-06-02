@@ -14,7 +14,7 @@
   register: reg_conf_diff
   failed_when: no
 
-# runs when .tmux.conf.local is missing || text in .tmux/my.tmux.edit is missing
+# runs when .tmux.conf.local is missing || text is not in .tmux/my.tmux.edit
 - name: tmux | conf copy
   copy: src=.tmux/.tmux.conf.local dest=.tmux.conf.local backup=yes
   when: reg_conf_diff.rc == 1

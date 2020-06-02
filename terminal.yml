@@ -29,6 +29,7 @@
       PS1='{{ (inventory_hostname == "localhost") | ternary(ws_ps1, host_ps1) }}'
 
       export EDITOR=vim
+      export LESS="$LESS -R -Q" # disable beep in LESS for Linux on Win10
       export DISPLAY=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2}'):0
       export TERM=xterm-256color
     dest: .bashrc
@@ -40,6 +41,7 @@
     content: |
       syntax on
       set background=dark
+      " disable beep for Linux on Win10
       set visualbell
       set tabstop=2 softtabstop=0 expandtab shiftwidth=2 smarttab
       :set mouse= "Enables Windows right-click pasting on VIM 8.0
@@ -49,6 +51,7 @@
     dest: .inputrc
     content: |
       set completion-ignore-case on
+      # disable beep for Linux on Win10
       set bell-style none
       "\e[1;5C": forward-word
       "\e[1;5D": backward-word
