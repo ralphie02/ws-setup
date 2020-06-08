@@ -6,7 +6,7 @@ ws-setup is a collection of scripts and instructions to configure wsl2 et tools 
 - Tick **Windows Subsystem for Linux option** and click **ok**
 - Restart machine and on bootup, go to `BIOS` by pressing **del** key -- [more help](http://tinyurl.com/yatbhr4u)
 - Once BIOS is configured, go to `Powershell` as Administrator and run:
-    > Enable-WindowsOptionalFeature -Online -FeatureName VirtualMachinePlatform
+    > Enable-WindowsOptionalFeature -Online -FeatureName VirtualMachinePlatform  
     > Restart-Computer
 - Once the machine is back up and running, run on `Powershell`:
     > wsl --set-default-version 2
