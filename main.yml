@@ -1,11 +1,10 @@
 ---
-- hosts: localhost # ansible-playbook <this file> -K -vvv
+- hosts: localhost # ansible-playbook main.yml -K -e "git_name=<name> git_email=<email>"
   gather_facts: no
   # connection: winrm
-  vars:
-    pkgs: curl git keychain libkrb5-dev mlocate net-tools rsync software-properties-common telnet
-      vim wget
-    pips: pip pywinrm pypsexec
+  vars: # libkrb5-dev
+    pkgs: curl git keychain mlocate net-tools rsync software-properties-common telnet vim wget
+    pips: pip #pywinrm pypsexec
 #     # ansible_connection: ssh
 #     # ansible_shell_type: cmd
 #     # ansible_user: ralph
@@ -25,9 +24,9 @@
   - git: repo=https://github.com/ralphie02/ws-setup.git dest=/tmp/ws-setup
     changed_when: no
   - copy: src=/tmp/ws-setup/ansible.cfg dest=~/.ansible.cfg force=no
+  - include_tasks: /tmp/ws-setup/fzf.yml
   - include_tasks: /tmp/ws-setup/terminal.yml
   - include_tasks: /tmp/ws-setup/tmux.yml
-  - include_tasks: /tmp/ws-setup/fzf.yml
   - raw: rm -r /tmp/ws-setup
     changed_when: no
 
