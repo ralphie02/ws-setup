@@ -9,7 +9,7 @@
   loop:
   - { path: ~/.bashrc, regexp: ^HISTSIZE=, line: HISTSIZE=200000 }
   - { path: ~/.bashrc, regexp: ^HISTFILESIZE=, line: HISTFILESIZE=300000 }
-  - { path: ~/.profile, regexp: '[ -f ~/.fzf.bash ] && source ~/.fzf.bash' }
+  - { path: ~/.profile, line: '[ -f ~/.fzf.bash ] && source ~/.fzf.bash' }
   - { path: ~/.bashrc, regexp: '[ -f ~/.fzf.bash ] && source ~/.fzf.bash', state: absent }
 
 - name: terminal | bashrc
