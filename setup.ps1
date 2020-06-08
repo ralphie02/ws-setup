@@ -8,7 +8,7 @@ function create-shortcut {
 }
 #------------------------ KEEPASS -----------------------#
 
-winget install keepass
+winget install --id DominikReichl.KeePass
 
 #------------------------ VCXSRV ------------------------#
 
@@ -24,7 +24,8 @@ create-shortcut "C:\Users\Public\Desktop\vcxsrv.lnk" `
 winget install vscode
 
 ## Install vscode extensions
-@("ms-vscode-remote.remote-wsl", "vscodevim.vim") | foreach { code --install-extension $_ }
+@("ms-vscode-remote.remote-wsl", "vscodevim.vim", "ms-vscode-remote.vscode-remote-extensionpack") `
+  | foreach { code --install-extension $_ }
 
 ## Set variables
 $settings = @'
