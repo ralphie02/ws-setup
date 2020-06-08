@@ -3,7 +3,4 @@
   git: repo=https://github.com/junegunn/fzf.git dest=~/.fzf depth=1
 
 - name: fzf install
-  raw: ~/.fzf/install
-  register: reg_fzf_install
-  changed_when: ('already exists' not in reg_fzf_install.stdout | lower)
-
+  command: ~/.fzf/install creates=~/.fzf.bash
