@@ -3,7 +3,7 @@
   apt: pkg=tmux,xclip update_cache=yes
   become: yes
 
-- git: repo=git@github.com:ralphie02/.tmux.git dest=~/.tmux
+- git: repo=https://github.com/ralphie02/.tmux.git dest=~/.tmux
 
 - name: tmux | base config
   file: src=~/.tmux/.tmux.conf dest=~/.tmux.conf state=link
