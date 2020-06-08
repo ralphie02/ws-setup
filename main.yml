@@ -1,18 +1,9 @@
 ---
 - hosts: localhost # ansible-playbook main.yml -K -e "git_name=<name> git_email=<email>"
   gather_facts: no
-  # connection: winrm
   vars: # libkrb5-dev
     pkgs: curl git keychain mlocate net-tools rsync software-properties-common telnet vim wget
     pips: pip #pywinrm pypsexec
-#     # ansible_connection: ssh
-#     # ansible_shell_type: cmd
-#     # ansible_user: ralph
-#     # ansible_password: "{{ ansible_become_pass }}"
-#     # ansible_port: 5986
-#     # ansible_connection: winrm
-#     # ansible_winrm_transport: basic
-#     # ansible_winrm_server_cert_validation: ignore
   tasks:
   - apt: pkg={{ pkgs.split(' ') }} update_cache=yes
     become: yes
@@ -29,15 +20,3 @@
   - include_tasks: /tmp/ws-setup/tmux.yml
   - raw: rm -r /tmp/ws-setup
     changed_when: no
-
-  # - name: Test the PsExec connection to the local system (target node) with your user
-  #   # win_psexec:
-  #   #   command: whoami.exe
-  #   psexec:
-  #     hostname: win.local
-  #     connection_username: ralph
-  #     connection_password: "{{ ansible_become_pass }}"
-  #     executable: cmd.exe
-  #     arguments: /c echo Hello World
-  # # - win_command: whoami
-  #   # connection: winrm
