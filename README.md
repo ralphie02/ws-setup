@@ -22,7 +22,7 @@ ws-setup is a collection of scripts and instructions to configure wsl2 et tools 
 - **Download** *main.yml* and **run** `ansible-playbook`
     > wget https://raw.githubusercontent.com/ralphie02/ws-setup/master/main.yml && ansible-playbook main.yml -e "git_name=<your_name> git_email=<your_email>" -K
 ### Windows Setup (on Windows)
-##### Pre-req (as of 2020/06/09; might be unnecessary in the future)
+#### Pre-req (as of 2020/06/09; might be unnecessary in the future)
 - **signup** for the [insider progream](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR-NSOqDz219PqoOqk5qxQEZUNFkzQVcxMkJXWEFCUkE4WThQWUJMVlA1Ty4u)
 - **download/update** [App Installer](https://www.microsoft.com/en-ca/p/app-installer/9nblggh4nns1?activetab=pivot:overviewtab)
 #### Main
