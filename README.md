@@ -13,7 +13,7 @@ ws-setup is a collection of scripts and instructions to configure wsl2 et tools 
 - Go to Microsoft store and **download ubuntu** (as of this writing *20.04* is available but I installed *18.04*)
 
 ### WSL2 Setup with Ansible (on Linux)
-##### Pre-req
+#### Pre-req
 - **Configure ssh** -- while not strictly necessary (besides helping with `.ssh` dir creation), it avoids writing an ansible script that repeatedly prompts for a *passphrase* since ansible `private prompts` cannot be induced *conditionally*
     > ssh-keygen -t rsa -b 4096 -C "<your_email>"
 #### Main
