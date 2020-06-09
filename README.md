@@ -23,8 +23,8 @@ ws-setup is a collection of scripts and instructions to configure wsl2 et tools 
     > wget https://raw.githubusercontent.com/ralphie02/ws-setup/master/main.yml && ansible-playbook main.yml -e "git_name=<your_name> git_email=<your_email>" -K
 ### Windows Setup (on Windows)
 #### Pre-req (as of 2020/06/09; might be unnecessary in the future)
-- **signup** for the [insider progream](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR-NSOqDz219PqoOqk5qxQEZUNFkzQVcxMkJXWEFCUkE4WThQWUJMVlA1Ty4u)
-- **download/update** [App Installer](https://www.microsoft.com/en-ca/p/app-installer/9nblggh4nns1?activetab=pivot:overviewtab)
+- **Signup** for the [insider program](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR-NSOqDz219PqoOqk5qxQEZUNFkzQVcxMkJXWEFCUkE4WThQWUJMVlA1Ty4u)
+- **Download/update** [App Installer](https://www.microsoft.com/en-ca/p/app-installer/9nblggh4nns1?activetab=pivot:overviewtab)
 #### Main
 - **Run** the script in `Powershell` as *Administrator* -- installations will be using `winget` which, from my understanding, will be the best tool *in the future* for package management. Installations might fail if Windows Setting in `Apps & features` do not allow installing apps *outside* of `Microsoft Store`
     > iex((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/ralphie02/ws-setup/master/setup.ps1'))
