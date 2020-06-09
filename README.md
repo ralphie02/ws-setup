@@ -4,7 +4,7 @@ ws-setup is a collection of scripts and instructions to configure wsl2 et tools 
 ### Install WSL2 (on Windows)
 - From the start menu **search** for and **select** `Turn Windows features on or off`
 - **Tick** `Windows Subsystem for Linux option` and **click** *ok*
-- **Restart** machine and on *bootup*, *go* to `BIOS` by **pressing** *del* key -- [more help](http://tinyurl.com/yatbhr4u)
+- **Reboot** and on *bootup*, **go** to `BIOS` by **pressing** *del* and **enable** `virtualization technology` -- [more help](http://tinyurl.com/yatbhr4u)
 - Once BIOS is configured, **go** to `Powershell` as Administrator and run:
     > Enable-WindowsOptionalFeature -Online -FeatureName VirtualMachinePlatform  
     > Restart-Computer
