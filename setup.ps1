@@ -16,7 +16,7 @@ winget install vcxsrv
 
 create-shortcut "$env:APPDATA\Microsoft\Windows\Start Menu\Programs\Startup\vcxsrv.lnk" `
     "C:\Program Files\VcXsrv\vcxsrv.exe" "-ac -terminate -lesspointer -multiwindow -wgl -primary"
-create-shortcut "C:\Users\Public\Desktop\vcxsrv.lnk" `
+create-shortcut "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\vcxsrv.lnk" `
     "C:\Program Files\VcXsrv\vcxsrv.exe" "-ac -terminate -lesspointer -multiwindow -wgl -primary"
 
 #------------------------ VSCODE ------------------------#
