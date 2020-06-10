@@ -30,7 +30,7 @@ ws-setup is a collection of scripts and instructions to configure wsl2 et tools 
     > iex((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/ralphie02/ws-setup/master/setup.ps1'))
 
 ### Extra
-##### GPG ([reference](https://docs.gitlab.com/ee/user/project/repository/gpg_signed_commits/))
+#### GPG ([reference](https://docs.gitlab.com/ee/user/project/repository/gpg_signed_commits/))
 - Generate the key then follow prompts:
     > gpg --full-gen-key
 - get priv gpg key: 
