@@ -66,7 +66,6 @@
     content: |
       Host *
         StrictHostKeyChecking no
-    force: no
 
 - name: terminal | /etc/wsl.conf
   copy:
@@ -77,5 +76,4 @@
 
       [network]
       generateHosts = false
-    force: no
   become: yes
