@@ -18,5 +18,6 @@
   - include_tasks: /tmp/ws-setup/fzf.yml
   - include_tasks: /tmp/ws-setup/terminal.yml
   - include_tasks: /tmp/ws-setup/tmux.yml
+  - include_tasks: /tmp/ws-setup/rbenv.yml # add -e "rbenv=on"
   - raw: rm -r /tmp/ws-setup
     changed_when: no

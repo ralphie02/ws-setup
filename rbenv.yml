@@ -1,0 +1,10 @@
+- name: rbenv | clone
+  git: repo=https://github.com/rbenv/rbenv.git dest=~/.rbenv
+  when: rbenv is defined
+
+- name: rbenv | bashrc
+  lineinfile: "{{ item }}"
+  loop:
+  - { path: ~/.bashrc, line: export PATH="$HOME/.rbenv/bin:$PATH" }
+  - { path: ~/.bashrc, line: eval "$(rbenv init -)" }
+  when: rbenv is defined
