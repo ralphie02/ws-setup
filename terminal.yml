@@ -77,3 +77,14 @@
       [network]
       generateHosts = false
   become: yes
+
+- name: terminal | reg user shared dir
+  command: powershell.exe '$env:UserName'
+  register: reg_user
+  changed_when: no
+
+- name: terminal | gen shared dir
+  file: path=/mnt/c/Users/{{ reg_user.stdout }}/shared state=directory
+
+- name: terminal | link shared dir
+  file: src=/mnt/c/Users/{{ reg_user.stdout }}/shared dest=~/shared state=link
