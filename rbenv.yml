@@ -1,14 +1,45 @@
+- set_fact:
+    rb_pkgs: zlib1g-dev libssl-dev libreadline-dev
+    rb_ver_regex: ^[0-9]\.[0-9]+\.[0-9]+
+
+- name: rbenv | check version format
+  set_fact: # True: 2.4.1 | False: 2.4 or blank
+    is_rb_ver_format: "{{ rb_ver | default('') | regex_search(rb_ver_regex)) }}"
+
+- name: rbenv | req
+  apt: pkg={{ rb_pkgs.split(' ') }} update_cache=yes
+
 - name: rbenv | clone
   git: repo=https://github.com/rbenv/rbenv.git dest=~/.rbenv
-  when: rbenv is defined
 
 - name: rbenv | bashrc
   lineinfile: "{{ item }}"
   loop:
   - { path: ~/.bashrc, line: 'export PATH="$HOME/.rbenv/bin:$PATH"' }
   - { path: ~/.bashrc, line: 'eval "$(rbenv init -)"' }
-  when: rbenv is defined
 
 - name: rbenv | ruby-build
   git: repo=https://github.com/rbenv/ruby-build.git dest=~/.rbenv/plugins/ruby-build
-  when: rbenv is defined
+
+- name: rbenv | ruby ver
+  command: rbenv install -l | egrep {{ rb_ver_regex }} | tail -1
+  register: reg_rb_latest
+  changed_when: no
+  when: not is_rb_ver_format
+
+- name: rbenv | ruby ver set
+  set_fact:
+    rb_ver: "{{ reg_rb_latest.stdout }}"
+  when: not is_rb_ver_format
+
+- name: rbenv | ruby check
+  command: rbenv versions | grep {{ rb_ver }}
+  register: reg_rbenv_vers
+  changed_when: no
+
+- name: rbenv | ruby install
+  command: rbenv install {{ rb_ver }} && rbenv global {{ rb_ver }}
+  when: reg_rbenv_vers.rc == 1
+
+- name: rbenv | gemrc no doc
+  copy: "dest=~/.gemrc content='gem: --no-document'"

@@ -18,6 +18,9 @@
   - include_tasks: /tmp/ws-setup/fzf.yml
   - include_tasks: /tmp/ws-setup/terminal.yml
   - include_tasks: /tmp/ws-setup/tmux.yml
-  - include_tasks: /tmp/ws-setup/rbenv.yml # add -e "rbenv=on"
+  - include_tasks: /tmp/ws-setup/rbenv.yml
+    when: rb_ver is defined or rails is defined
+  - include_tasks: /tmp/ws-setup/rails.yml
+    when: rails is defined
   - raw: rm -r /tmp/ws-setup
     changed_when: no
