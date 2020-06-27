@@ -5,6 +5,10 @@
 - name: rbenv | bashrc
   lineinfile: "{{ item }}"
   loop:
-  - { path: ~/.bashrc, line: export PATH="$HOME/.rbenv/bin:$PATH" }
-  - { path: ~/.bashrc, line: eval "$(rbenv init -)" }
+  - { path: ~/.bashrc, line: 'export PATH="$HOME/.rbenv/bin:$PATH"' }
+  - { path: ~/.bashrc, line: 'eval "$(rbenv init -)"' }
+  when: rbenv is defined
+
+- name: rbenv | ruby-build
+  git: repo=https://github.com/rbenv/ruby-build.git dest=~/.rbenv/plugins/ruby-build
   when: rbenv is defined
