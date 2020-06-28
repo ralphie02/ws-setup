@@ -4,7 +4,7 @@
 
 - name: rbenv | check version format
   set_fact: # True: 2.4.1 | False: 2.4 or blank
-    is_rb_ver_format: "{{ rb_ver | default('') | regex_search(rb_ver_regex)) }}"
+    is_rb_ver_format: "{{ rb_ver | default('') | regex_search(rb_ver_regex) }}"
 
 - name: rbenv | req
   apt: pkg={{ rb_pkgs.split(' ') }} update_cache=yes
