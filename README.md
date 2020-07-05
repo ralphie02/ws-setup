@@ -33,7 +33,7 @@ ws-setup is a collection of scripts and instructions to configure wsl2 et tools 
 #### GPG ([reference](https://docs.gitlab.com/ee/user/project/repository/gpg_signed_commits/))
 - Generate the key then follow prompts:
     > gpg --full-gen-key
-- get priv gpg key: 
+- Get priv gpg key: 
     > gpg --list-secret-keys --keyid-format LONG <your_email>
     ```
     sec   rsa4096/30F2B65B9246B6CA 2017-08-18 [SC]
@@ -41,5 +41,10 @@ ws-setup is a collection of scripts and instructions to configure wsl2 et tools 
     uid                   [ultimate] Mr. Robot <your_email>
     ssb   rsa4096/B7ABC0813E4028C0 2017-08-18 [E]
     ```
-- get pub gpg key (value taken from *sec* above):
+- Get pub gpg key (value taken from *sec* above):
     > gpg --armor --export 30F2B65B9246B6CA
+#### Powertoys ([reference](https://github.com/microsoft/PowerToys#installing-and-running-microsoft-powertoys))
+- Install .Net ([reference](https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-install-script#recommended-version))
+    > iex((New-Object System.Net.WebClient).DownloadString('https://dot.net/v1/dotnet-install.ps1'))
+- Run winget
+    > winget install powertoys
