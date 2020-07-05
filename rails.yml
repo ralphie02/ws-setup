@@ -4,10 +4,9 @@
   register: reg_gem_list
   changed_when: no
 
-- name: rails | bundler
+## needs testing, not sure if this works
+- name: rails | install:bundler,rails,foreman
   command: gem install bundler
-  when: ('bundler' not in reg_gem_list)
-
-- name: rails | install
-  command: gem install rails
-  when: ('rails ' not in reg_gem_list)
+  register: reg_bundler
+  changed_when: reg_bundler.stdout_lines.0.split(' ')[-1].split('-')[-1] not in reg_gem_list.stdout
+  loop: [bundler, rails, foreman]
