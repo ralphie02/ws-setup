@@ -49,6 +49,7 @@ $settings = @'
   "editor.rulers": [
     100
   ],
+  "workbench.editor.enablePreviewFromQuickOpen": false,
 }
 '@.Trim()
 $keybindings = @'
