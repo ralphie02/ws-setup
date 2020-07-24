@@ -49,6 +49,9 @@ $settings = @'
   "editor.rulers": [
     100
   ],
+  "window.zoomLevel": 0,
+  "editor.occurrencesHighlight": false,
+  "editor.find.seedSearchStringFromSelection": false,
   "workbench.editor.enablePreviewFromQuickOpen": false,
 }
 '@.Trim()
