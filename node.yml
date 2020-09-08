@@ -1,0 +1,26 @@
+---
+- name: node | set node ver
+  set_fact:
+    node_ver: "{{ node_ver | default('lts') }}"
+
+- name: node | repo update pre-check
+  shell: cat /etc/apt/sources.list.d/nodesource.list > /tmp/ws-setup/node.list
+  changed_when: no
+  failed_when: no # for the first run when nodesource.list is missing
+
+- name: node | repo update
+  shell: curl -sL https://deb.nodesource.com/setup_{{ node_ver }}.x | bash -
+  become: yes
+  changed_when: no
+  when: node_ver | regex_search('^(lts|current|[0-9][0-9])$')
+
+- name: node | repo update check
+  command: diff /tmp/ws-setup/node.list /etc/apt/sources.list.d/nodesource.list
+  register: reg_source_list
+  changed_when: reg_source_list.rc == 1
+  failed_when: no
+  when: node_ver | regex_search('^(lts|current|[0-9][0-9])$')
+
+- name: node | install
+  apt: pkg=nodejs
+  when: node_ver | regex_search('^(lts|current|[0-9][0-9])$')
