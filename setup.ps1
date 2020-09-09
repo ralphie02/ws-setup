@@ -94,6 +94,10 @@ $keybindings = @'
     "command": "workbench.action.editorLayoutTwoRows"
   },
   {
+    "key": "shift+alt+9",
+    "command": "workbench.action.editorLayoutThreeRows"
+  },
+  {
     "key": "ctrl+shift+-",
     "command": "-workbench.action.zoomOut"
   },
