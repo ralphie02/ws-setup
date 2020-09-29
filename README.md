@@ -6,9 +6,9 @@ ws-setup is a collection of scripts and instructions to configure wsl2 et tools 
 - **Tick** `Windows Subsystem for Linux option` and **click** *ok*
 - **Reboot** and on *bootup*, **go** to `BIOS` by **pressing** *del* and **enable** `virtualization technology` -- [more help](http://tinyurl.com/yatbhr4u)
 - Once BIOS is configured, **go** to `Powershell` as Administrator and run:
-    > Enable-WindowsOptionalFeature -Online -FeatureName VirtualMachinePlatform  
+    > Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Windows-Subsystem-Linux; Enable-WindowsOptionalFeature -Online -FeatureName VirtualMachinePlatform  
     > Restart-Computer
-- Once the machine is back up and running, **run** command below on `Powershell`:
+- Once the machine is back up and running, **run** command below on `cmd`:
     > wsl --set-default-version 2
 - Go to Microsoft store and **download ubuntu** (as of this writing *20.04* is available but I installed *18.04*)
 
