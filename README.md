@@ -18,7 +18,7 @@ ws-setup is a collection of scripts and instructions to configure wsl2 et tools 
     > ssh-keygen -t rsa -b 4096 -C "<your_email>"
 #### Main
 - **Install** *pip* and *ansible* (used version *2.9.9* as of this writing)
-    > sudo apt update && sudo apt install -y python3-pip && pip3 install ansible==<your_version>
+    > sudo apt update && sudo apt install -y python3-pip && pip3 install ansible==<your_version> && source ~/.profile
 - **Download** *main.yml* and **run** `ansible-playbook`
     > wget https://raw.githubusercontent.com/ralphie02/ws-setup/master/main.yml && ansible-playbook main.yml -e "git_name=<your_name> git_email=<your_email>" -K
 ### Windows Setup (on Windows)
