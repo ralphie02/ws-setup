@@ -14,8 +14,10 @@ winget install --id DominikReichl.KeePass
 
 winget install vcxsrv
 
+# user-startup
 create-shortcut "$env:APPDATA\Microsoft\Windows\Start Menu\Programs\Startup\vcxsrv.lnk" `
     "C:\Program Files\VcXsrv\vcxsrv.exe" "-ac -terminate -lesspointer -multiwindow -wgl -primary"
+# system-shortcut
 create-shortcut "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\vcxsrv.lnk" `
     "C:\Program Files\VcXsrv\vcxsrv.exe" "-ac -terminate -lesspointer -multiwindow -wgl -primary"
 
