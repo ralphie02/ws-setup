@@ -8,6 +8,7 @@
 
 - name: rbenv | req
   apt: pkg={{ rb_pkgs.split(' ') }} update_cache=yes
+  become: yes
 
 - name: rbenv | clone
   git: repo=https://github.com/rbenv/rbenv.git dest=~/.rbenv
