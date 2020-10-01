@@ -19,8 +19,8 @@ ws-setup is a collection of scripts and instructions to configure wsl2 et tools 
 #### Main
 - **Install** *pip* and *ansible* (used version *2.9.9* as of this writing)
     > sudo apt update && sudo apt install -y python3-pip && pip3 install ansible==<your_version> && source ~/.profile
-- **Download** *main.yml* and **run** `ansible-playbook`
-    > wget https://raw.githubusercontent.com/ralphie02/ws-setup/master/main.yml && ansible-playbook main.yml -e "git_name=<your_name> git_email=<your_email>" -K
+- **Download** *main.yml* and **run** `ansible-playbook` (remove *rails* and *node* env var to disable installation)
+    > wget https://raw.githubusercontent.com/ralphie02/ws-setup/master/main.yml && ansible-playbook main.yml -e "git_name=<your_name> git_email=<your_email> rails=yes node=yes" -K
 ### Windows Setup (on Windows)
 #### Pre-req (as of 2020/06/09; might be unnecessary in the future)
 - **Signup** for the [insider program](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR-NSOqDz219PqoOqk5qxQEZUNFkzQVcxMkJXWEFCUkE4WThQWUJMVlA1Ty4u)
