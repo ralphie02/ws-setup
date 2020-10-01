@@ -1,12 +1,12 @@
 ---
 - name: rails | gem list
-  command: gem list
+  command: ~/.rbenv/shims/gem list
   register: reg_gem_list
   changed_when: no
 
 ## needs testing, not sure if this works
 - name: rails | install:bundler,rails,foreman
-  command: gem install bundler
+  command: ~/.rbenv/shims/gem install bundler
   register: reg_bundler
   changed_when: reg_bundler.stdout_lines.0.split(' ')[-1].split('-')[-1] not in reg_gem_list.stdout
   loop: [bundler, rails, foreman]
