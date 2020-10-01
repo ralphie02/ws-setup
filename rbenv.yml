@@ -23,7 +23,7 @@
   git: repo=https://github.com/rbenv/ruby-build.git dest=~/.rbenv/plugins/ruby-build
 
 - name: rbenv | ruby ver
-  command: rbenv install -l | egrep {{ rb_ver_regex }} | tail -1
+  command: ~/.rbenv/bin/rbenv install -l | egrep {{ rb_ver_regex }} | tail -1
   register: reg_rb_latest
   changed_when: no
   when: not is_rb_ver_format
@@ -34,12 +34,12 @@
   when: not is_rb_ver_format
 
 - name: rbenv | ruby check
-  command: rbenv versions | grep {{ rb_ver }}
+  command: ~/.rbenv/bin/rbenv versions | grep {{ rb_ver }}
   register: reg_rbenv_vers
   changed_when: no
 
 - name: rbenv | ruby install
-  command: rbenv install {{ rb_ver }} && rbenv global {{ rb_ver }}
+  command: ~/.rbenv/bin/rbenv install {{ rb_ver }} && ~/.rbenv/bin/rbenv global {{ rb_ver }}
   when: reg_rbenv_vers.rc == 1
 
 - name: rbenv | gemrc no doc
