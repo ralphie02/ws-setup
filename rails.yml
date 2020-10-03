@@ -8,5 +8,5 @@
 - name: rails | install:bundler,rails,foreman
   shell: ~/.rbenv/shims/gem install {{ item }}
   register: reg_gem
-  changed_when: reg_gem.stdout_lines.0.split(' ')[-1].split('-')[-1] not in reg_gem_list.stdout
+  changed_when: item not in reg_gem_list.stdout
   loop: [bundler, rails, foreman]
