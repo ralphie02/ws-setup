@@ -7,6 +7,7 @@
   tasks:
   - apt: pkg={{ pkgs.split(' ') }} update_cache=yes
     become: yes
+    tags: pkg_update
   - git_config: "{{ item }}"
     loop:
     - { name: "user.name", scope: global, value: "{{ git_name }}" }
@@ -19,10 +20,10 @@
   - include_tasks: /tmp/ws-setup/terminal.yml
   - include_tasks: /tmp/ws-setup/tmux.yml
   - include_tasks: /tmp/ws-setup/node.yml
-    when: node_ver is defined or node is defined
+    when: node_ver is defined or node == "yes"
   - include_tasks: /tmp/ws-setup/rbenv.yml
-    when: rb_ver is defined or rails is defined
+    when: rb_ver is defined or rails == "yes"
   - include_tasks: /tmp/ws-setup/rails.yml
-    when: rails is defined
+    when: rails == "yes"
   - raw: rm -r /tmp/ws-setup
     changed_when: no
