@@ -20,10 +20,10 @@
   - include_tasks: /tmp/ws-setup/terminal.yml
   - include_tasks: /tmp/ws-setup/tmux.yml
   - include_tasks: /tmp/ws-setup/node.yml
-    when: node_ver is defined or node == "yes"
+    when: node_ver is defined or node is defined
   - include_tasks: /tmp/ws-setup/rbenv.yml
-    when: rb_ver is defined or rails == "yes"
+    when: rb_ver is defined or rails is defined
   - include_tasks: /tmp/ws-setup/rails.yml
-    when: rails == "yes"
+    when: rails is defined
   - raw: rm -r /tmp/ws-setup
     changed_when: no
