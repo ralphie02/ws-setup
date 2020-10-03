@@ -6,7 +6,7 @@
 
 ## needs testing, not sure if this works
 - name: rails | install:bundler,rails,foreman
-  command: ~/.rbenv/shims/gem install bundler
-  register: reg_bundler
-  changed_when: reg_bundler.stdout_lines.0.split(' ')[-1].split('-')[-1] not in reg_gem_list.stdout
+  command: ~/.rbenv/shims/gem install {{ item }}
+  register: reg_gem
+  changed_when: reg_gem.stdout_lines.0.split(' ')[-1].split('-')[-1] not in reg_gem_list.stdout
   loop: [bundler, rails, foreman]
