@@ -1,4 +1,8 @@
 ---
+- name: rails | yarn
+  apt: pkg=yarn update_cache=yes
+  become: yes
+
 - name: rails | gem list
   shell: ~/.rbenv/shims/gem list
   register: reg_gem_list
