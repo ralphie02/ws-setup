@@ -10,14 +10,6 @@
     update_cache: yes
   become: yes
 
-- set_fact:
-    req_pkgs: zlib1g-dev build-essential libssl-dev libreadline-dev libyaml-dev libsqlite3-dev
-      sqlite3 libxml2-dev libxslt1-dev libcurl4-openssl-dev libffi-dev nodejs yarn python3-pip
-
-- name: setup | req rails pkgs
-  apt: pkg={{ req_pkgs.split(' ') }} update_cache=yes
-  become: yes
-
 - name: rails | gem list
   shell: ~/.rbenv/shims/gem list
   register: reg_gem_list
