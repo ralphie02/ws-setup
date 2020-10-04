@@ -1,6 +1,21 @@
 ---
-- name: rails | yarn
-  apt: pkg=yarn update_cache=yes
+- name: setup | yarn add apt key
+  apt_key: url=https://dl.yarnpkg.com/debian/pubkey.gpg
+  become: yes
+
+- name: setup | yarn add apt repo
+  apt_repository:
+    repo: deb https://dl.yarnpkg.com/debian/ stable main
+    filename: yarn
+    update_cache: yes
+  become: yes
+
+- set_fact:
+    req_pkgs: zlib1g-dev build-essential libssl-dev libreadline-dev libyaml-dev libsqlite3-dev
+      sqlite3 libxml2-dev libxslt1-dev libcurl4-openssl-dev libffi-dev nodejs yarn python3-pip
+
+- name: setup | req rails pkgs
+  apt: pkg={{ req_pkgs.split(' ') }} update_cache=yes
   become: yes
 
 - name: rails | gem list
