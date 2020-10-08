@@ -129,6 +129,22 @@ $keybindings = @'
     "key": "ctrl+\\",
     "command": "-workbench.action.splitEditor"
   },
+  {
+    "key": "ctrl+shift+tab",
+    "command": "-workbench.action.quickOpenLeastRecentlyUsedEditorInGroup"
+  },
+  {
+    "key": "ctrl+tab",
+    "command": "-workbench.action.quickOpenPreviousRecentlyUsedEditorInGroup"
+  },
+  {
+    "key": "ctrl+shift+tab",
+    "command": "workbench.action.previousEditor"
+  },
+  {
+    "key": "ctrl+tab",
+    "command": "workbench.action.nextEditor"
+  },
 ]
 '@.Trim()
 $preferences = @{ settings = $settings; keybindings = $keybindings }
