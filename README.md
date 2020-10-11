@@ -2,15 +2,14 @@
 ws-setup is a collection of scripts and instructions to configure wsl2 et tools on my workstation -- **ubuntu** (and debian for this matter).
 
 ### Install WSL2 (on Windows)
-- From the start menu **search** for and **select** `Turn Windows features on or off`
-- **Tick** `Windows Subsystem for Linux option` and **click** *ok*
-- **Reboot** and on *bootup*, **go** to `BIOS` by **pressing** *del* and **enable** `virtualization technology` -- [more help](http://tinyurl.com/yatbhr4u)
 - Once BIOS is configured, **go** to `Powershell` as Administrator and run:
     > Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Windows-Subsystem-Linux; Enable-WindowsOptionalFeature -Online -FeatureName VirtualMachinePlatform  
     > Restart-Computer
+- On *bootup*, **go** to `BIOS` by **pressing** *del* and **enable** `virtualization technology` -- [more help](http://tinyurl.com/yatbhr4u)
 - Once the machine is back up and running, **run** command below on `cmd`:
     > wsl --set-default-version 2
-- Go to Microsoft store and **download ubuntu** (as of this writing *20.04* is available but I installed *18.04*)
+- In the future, the above steps might no longer be necessary as the dev team is trying to simplify the installation process as mentioned [here](https://devblogs.microsoft.com/commandline/the-windows-subsystem-for-linux-build-2020-summary/#current-roadmap-whats-coming-to-wsl)
+- Go to Microsoft store and **download ubuntu** (no version number)
 
 ### WSL2 Setup with Ansible (on Linux)
 #### Pre-req
