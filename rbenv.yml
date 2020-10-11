@@ -56,6 +56,7 @@
     block: |
       # awesome print
       begin
+        require 'irb/completion'
         require 'awesome_print'
         AwesomePrint.irb!
       rescue LoadError => err
