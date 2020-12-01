@@ -1,13 +1,17 @@
 ---
-- name: setup | yarn add apt key
+- name: rails | yarn add apt key
   apt_key: url=https://dl.yarnpkg.com/debian/pubkey.gpg
   become: yes
 
-- name: setup | yarn add apt repo
+- name: rails | yarn add apt repo
   apt_repository:
     repo: deb https://dl.yarnpkg.com/debian/ stable main
     filename: yarn
     update_cache: yes
+  become: yes
+
+- name: rails | yarn install
+  apt: pkg=yarn
   become: yes
 
 - name: rails | gem list
