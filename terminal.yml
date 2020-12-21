@@ -52,6 +52,9 @@
   copy:
     dest: ~/.inputrc
     content: |
+      set show-all-if-ambiguous on
+      set show-all-if-unmodified on
+      set menu-complete-display-prefix on
       set completion-ignore-case on
       # disable beep for Linux on Win10
       set bell-style none
