@@ -47,6 +47,22 @@ $settings = @'
     "<C-u>": false,
     "<C-v>": false,
   },
+  "vim.normalModeKeyBindings": [
+    {
+      "before": ["u"],
+      "after": [],
+      "commands": [
+        { "command": "undo" }
+      ]
+    },
+    {
+      "before": ["<C-r>"],
+      "after": [],
+      "commands": [
+        { "command": "redo" }
+      ]
+    }
+  ],  
   "extensions.ignoreRecommendations": false,
   "editor.rulers": [
     100
