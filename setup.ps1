@@ -71,6 +71,7 @@ $settings = @'
   "editor.find.seedSearchStringFromSelection": false,
   "workbench.editor.enablePreviewFromQuickOpen": false,
   "workbench.editor.closeEmptyGroups": false,
+  "workbench.colorTheme": "Monokai Dimmed",
 }
 '@.Trim()
 $keybindings = @'
