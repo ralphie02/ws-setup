@@ -34,7 +34,6 @@ $settings = @'
 {
   "remote.SSH.showLoginTerminal": true,
   "git.ignoreLegacyWarning": true,
-  "terminal.integrated.shell.linux": "/bin/bash",
   "terminal.integrated.rightClickBehavior": "default",
   "files.trimTrailingWhitespace": true,
   "files.insertFinalNewline": true,
@@ -72,6 +71,7 @@ $settings = @'
   "workbench.editor.enablePreviewFromQuickOpen": false,
   "workbench.editor.closeEmptyGroups": false,
   "workbench.colorTheme": "Monokai Dimmed",
+  "terminal.integrated.tabs.enabled": false,
 }
 '@.Trim()
 $keybindings = @'
