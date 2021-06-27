@@ -72,6 +72,7 @@ $settings = @'
   "workbench.editor.closeEmptyGroups": false,
   "workbench.colorTheme": "Monokai Dimmed",
   "terminal.integrated.tabs.enabled": false,
+  "workbench.editor.untitled.hint": "hidden",
 }
 '@.Trim()
 $keybindings = @'
@@ -161,6 +162,19 @@ $keybindings = @'
   {
     "key": "ctrl+tab",
     "command": "workbench.action.nextEditor"
+  },
+  {
+    "key": "ctrl+e",
+    "command": "-workbench.action.quickOpen"
+  },
+  {
+    "key": "ctrl+shift+j",
+    "command": "-workbench.action.search.toggleQueryDetails",
+    "when": "inSearchEditor || searchViewletFocus"
+  },
+  {
+    "key": "ctrl+shift+j",
+    "command": "workbench.action.toggleMaximizedPanel"
   },
 ]
 '@.Trim()
