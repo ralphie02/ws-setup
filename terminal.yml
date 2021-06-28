@@ -62,6 +62,7 @@
       "\e[1;5D": backward-word
       "\e[A": history-search-backward
       "\e[B": history-search-forward
+      "\C-s": nop
 
 - name: terminal | .ssh/config
   copy:
