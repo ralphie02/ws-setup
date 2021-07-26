@@ -73,6 +73,7 @@ $settings = @'
   "workbench.colorTheme": "Monokai Dimmed",
   "terminal.integrated.tabs.enabled": false,
   "workbench.editor.untitled.hint": "hidden",
+  "workbench.editor.enablePreview": false,
   "terminal.integrated.commandsToSkipShell": [
     "workbench.action.toggleSidebarVisibility"
   ]
