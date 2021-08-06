@@ -180,6 +180,11 @@ $keybindings = @'
     "key": "ctrl+shift+j",
     "command": "workbench.action.toggleMaximizedPanel"
   },
+  {
+    "key": "ctrl+k",
+    "command": "workbench.action.terminal.clear",
+    "when": "terminalFocus"
+  },
 ]
 '@.Trim()
 $preferences = @{ settings = $settings; keybindings = $keybindings }
