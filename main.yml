@@ -13,6 +13,8 @@
     - { name: "user.name", scope: global, value: "{{ git_name }}" }
     - { name: "user.email", scope: global, value: "{{ git_email }}" }
     - { name: "color.ui", scope: global, value: true }
+    - { name: "push.default", scope: global, value: current }
+    - { name: "branch.autoSetupMerge", scope: global, value: always }
   - git: repo=https://github.com/ralphie02/ws-setup.git dest=/tmp/ws-setup
     changed_when: no
   - copy: src=/tmp/ws-setup/ansible.cfg dest=~/.ansible.cfg force=no
