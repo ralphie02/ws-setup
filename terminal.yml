@@ -14,9 +14,9 @@
 
 - name: terminal | bashrc
   blockinfile:
+    # I think this is no longer required. Removed from the top of the block line
+    # eval `keychain --eval --agents ssh id_rsa`
     block: |
-      eval `keychain --eval --agents ssh id_rsa`
-
       parse_git_branch() {
         git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/'
       }
